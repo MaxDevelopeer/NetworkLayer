@@ -10,13 +10,13 @@ import Foundation
 
 
 typealias Parameters = [String : Any]
-typealias response = (Result <Data,NetworkClient.NetworkError>) -> ()
+typealias response = (Result <Data, NetworkClient.NetworkError>) -> ()
 
 
 
-protocol HTTPRequestProtocol {
+protocol NetworkRequestConstructor {
     
-    func getDataWith(completion: @escaping response)
+   func asURLRequest() -> Result <URLRequest, Error>
     
 }
 
@@ -26,30 +26,17 @@ class NetworkClient {
     private let session: URLSession
     
     
-    enum NetworkError: Error {
-        case missingResponse
-        case failedCreateRequest
-        case failedGetDataFromRequest
-        case clientError(code: Int)
-        case serverError(code: Int)
-        case unknownResponseStatusCode(code: Int)
-        case failedToSendRequest(error: Error)
+    init(sessionConfiguration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: sessionConfiguration)
     }
-    
-    
     
     init(session: URLSession) {
         self.session = session
     }
     
     
-    func requestFor(resource: NetworkRequestConstructor, completion: @escaping response) throws {
-        
-        
-        guard let request = try? resource.asUrlRequest() else {
-            throw NetworkError.failedCreateRequest
-        }
-        
+    func requestFor(urlRequest: URLRequest, completion: @escaping response) throws {
+
         
        let taskCompletionHandler = { (data: Data?, response: URLResponse?, error: Error?) in
             
@@ -80,60 +67,25 @@ class NetworkClient {
             
         }
         
+        session.dataTask(with: urlRequest, completionHandler: taskCompletionHandler).resume()
         
-        session.dataTask(with: request, completionHandler: taskCompletionHandler)
-        
-        
-//        switch method {
-//        case HTTPMethod.get.rawValue:
-//            session.dataTask(with: request, completionHandler: taskCompletionHandler)
-//        case HTTPMethod.post.rawValue:
-//            session.uploadTask(with: request, from: <#T##Data?#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
-//        default:
-//            break
-//        }
-        
-        
-        
-    }
-    
-    
-    func sendRequest(_ request: URLRequest, completion: @escaping response) {
-        
-        self.session.dataTask(with: request)
-        
-        
-    }
-    
-    
-    func basicPostRequest(request: URLRequest, completion: @escaping response) {
-        
-        
-        
-        
-    }
-    
-    
-}
-
-
-extension Data {
-    
-    func debugInfo() {
-        guard let jsonObject = try? JSONSerialization.jsonObject(with: self, options: .allowFragments) as? [String: Any] else { return }
-        let jsonString = String(decoding: self, as: UTF8.self)
-        
-        print("jsonObject: ", jsonObject)
-        print("jsonString:", jsonString)
     }
     
 }
 
 
-
-// core layer
-protocol NetworkRequestConstructor {
+extension NetworkClient {
     
-   func asUrlRequest() throws -> URLRequest
+    
+    enum NetworkError: Error {
+        case missingResponse
+        case failedCreateRequest
+        case failedGetDataFromRequest
+        case clientError(code: Int)
+        case serverError(code: Int)
+        case unknownResponseStatusCode(code: Int)
+        case failedToSendRequest(error: Error)
+    }
+    
     
 }

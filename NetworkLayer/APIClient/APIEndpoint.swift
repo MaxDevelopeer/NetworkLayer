@@ -9,14 +9,16 @@
 import Foundation
 
 
-extension ApiRouter {
+extension APIRouter {
     
     var endpoint: String {
         switch self {
-        case .basic:
-            return Endpoint.basic
-        case .basicWithParam(let number):
-            return String(format: Endpoint.basicWithParam, number)
+        case .posts:
+            return Endpoint.posts
+        case .specificPost(let postId):
+            return String(format: Endpoint.specificPost, postId)
+        case .basicMultipartData:
+            return Endpoint.basicMultipart
         }
     }
     

@@ -12,36 +12,21 @@ import Foundation
 struct ApiConfig {
    
     #if DEBUG
-    static let baseUrl = "http://example1"
-    static let authHeader = "Basic EXAMPLE1="
+    static let baseUrl = "https://jsonplaceholder.typicode.com"
+    static let authHeader = "Basic EXAMPLE1=="
     #endif
     
     
     #if RELEASE
-    static let baseUrl = "https://example2"
+    static let baseUrl = "https://example"
     static let authHeader = "Basic EXAMPLE2=="
     #endif
 
 }
 
-struct ApiHeader {
-    static let appVersion = "DD-APP-VERSION"
-    static let appBuild = "DD-APP-BUILD"
-    static let appOS = "DD-OS"
-    static let authorization = "Authorization"
-}
-
 
 struct Endpoint {
-    static let basic = "/api/v1/example"
-    static let basicWithParam = "/api/v1/examples/%@"
-}
-
-
-struct Defaults {
-    static let Cookie = "Cookie"
-    static let SessionCookies = "SessionCookies"
-    static let APNSToken = "APNSToken"
-    static let ISDDNewInstalled = "ISDDNewInstalled"
-    static let LastViewedNotificationTime = "lastViewedNotificationTime"
+    static let posts = "/posts"
+    static let specificPost = "/posts/%@"
+    static let basicMultipart = "/exampleMultipart"
 }

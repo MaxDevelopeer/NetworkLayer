@@ -14,8 +14,14 @@
 		941BC21223DCB5EB00550F67 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941BC21123DCB5EB00550F67 /* APIEndpoint.swift */; };
 		941BC21423DCB60200550F67 /* HTTPEncodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941BC21323DCB60200550F67 /* HTTPEncodeType.swift */; };
 		941BC21623DCBC3500550F67 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941BC21523DCBC3500550F67 /* APIConfig.swift */; };
-		941BC21A23DCD68200550F67 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941BC21923DCD68200550F67 /* Protocols.swift */; };
+		9437112923E5C4970089E929 /* MultipartBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437112823E5C4970089E929 /* MultipartBody.swift */; };
+		9437112C23E5E1B90089E929 /* PartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437112B23E5E1B90089E929 /* PartType.swift */; };
+		9437112E23E5E2330089E929 /* ParamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437112D23E5E2330089E929 /* ParamPart.swift */; };
+		9437113023E5E23C0089E929 /* FilePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437112F23E5E23C0089E929 /* FilePart.swift */; };
 		94DC2E7823DDBF03008B334F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC2E7723DDBF03008B334F /* NetworkClient.swift */; };
+		94EEB11223E5E9540064601B /* MultipartBoundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEB11123E5E9540064601B /* MultipartBoundary.swift */; };
+		94EEB11423E5E9780064601B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEB11323E5E9780064601B /* Extensions.swift */; };
+		94EEB11623E60F460064601B /* APIRequestBodyParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEB11523E60F460064601B /* APIRequestBodyParts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +34,14 @@
 		941BC21123DCB5EB00550F67 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		941BC21323DCB60200550F67 /* HTTPEncodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEncodeType.swift; sourceTree = "<group>"; };
 		941BC21523DCBC3500550F67 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
-		941BC21923DCD68200550F67 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		9437112823E5C4970089E929 /* MultipartBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartBody.swift; sourceTree = "<group>"; };
+		9437112B23E5E1B90089E929 /* PartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartType.swift; sourceTree = "<group>"; };
+		9437112D23E5E2330089E929 /* ParamPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamPart.swift; sourceTree = "<group>"; };
+		9437112F23E5E23C0089E929 /* FilePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePart.swift; sourceTree = "<group>"; };
 		94DC2E7723DDBF03008B334F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		94EEB11123E5E9540064601B /* MultipartBoundary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartBoundary.swift; sourceTree = "<group>"; };
+		94EEB11323E5E9780064601B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		94EEB11523E60F460064601B /* APIRequestBodyParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestBodyParts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,7 @@
 				941BC20A23DCB40300550F67 /* APIClient */,
 				941BC20223DCB36200550F67 /* NetworkLayer.h */,
 				941BC20323DCB36200550F67 /* Info.plist */,
+				94EEB11323E5E9780064601B /* Extensions.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -72,13 +85,14 @@
 		941BC20A23DCB40300550F67 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				9437112A23E5E1AB0089E929 /* Multipart */,
 				941BC21B23DCD88100550F67 /* HTTP */,
 				941BC20D23DCB5D000550F67 /* APIRequestParameters.swift */,
 				941BC20F23DCB5DE00550F67 /* APIRouter.swift */,
 				941BC21123DCB5EB00550F67 /* APIEndpoint.swift */,
 				941BC21523DCBC3500550F67 /* APIConfig.swift */,
-				941BC21923DCD68200550F67 /* Protocols.swift */,
 				94DC2E7723DDBF03008B334F /* NetworkClient.swift */,
+				94EEB11523E60F460064601B /* APIRequestBodyParts.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -90,6 +104,18 @@
 				941BC21323DCB60200550F67 /* HTTPEncodeType.swift */,
 			);
 			path = HTTP;
+			sourceTree = "<group>";
+		};
+		9437112A23E5E1AB0089E929 /* Multipart */ = {
+			isa = PBXGroup;
+			children = (
+				9437112B23E5E1B90089E929 /* PartType.swift */,
+				9437112D23E5E2330089E929 /* ParamPart.swift */,
+				9437112F23E5E23C0089E929 /* FilePart.swift */,
+				9437112823E5C4970089E929 /* MultipartBody.swift */,
+				94EEB11123E5E9540064601B /* MultipartBoundary.swift */,
+			);
+			path = Multipart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,14 +198,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9437112C23E5E1B90089E929 /* PartType.swift in Sources */,
 				941BC21423DCB60200550F67 /* HTTPEncodeType.swift in Sources */,
 				941BC20C23DCB59500550F67 /* HTTPMethod.swift in Sources */,
+				9437112923E5C4970089E929 /* MultipartBody.swift in Sources */,
+				94EEB11623E60F460064601B /* APIRequestBodyParts.swift in Sources */,
+				9437113023E5E23C0089E929 /* FilePart.swift in Sources */,
 				941BC21623DCBC3500550F67 /* APIConfig.swift in Sources */,
 				941BC21023DCB5DE00550F67 /* APIRouter.swift in Sources */,
 				941BC20E23DCB5D000550F67 /* APIRequestParameters.swift in Sources */,
 				941BC21223DCB5EB00550F67 /* APIEndpoint.swift in Sources */,
-				941BC21A23DCD68200550F67 /* Protocols.swift in Sources */,
+				94EEB11223E5E9540064601B /* MultipartBoundary.swift in Sources */,
 				94DC2E7823DDBF03008B334F /* NetworkClient.swift in Sources */,
+				9437112E23E5E2330089E929 /* ParamPart.swift in Sources */,
+				94EEB11423E5E9780064601B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

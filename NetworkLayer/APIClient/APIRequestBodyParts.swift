@@ -1,23 +1,24 @@
 //
-//  HTTPRequestParameters.swift
+//  APIRequestBody.swift
 //  NetworkLayer
 //
-//  Created by Maxim on 25/01/2020.
+//  Created by Maxim on 01/02/2020.
 //  Copyright © 2020 maxim.kruchinin@firstlinesoftware.com. All rights reserved.
 //
 
 import Foundation
 
-
 extension APIRouter {
     
-    var params: Parameters {
+    var bodyParts: [PartType] {
         switch self {
-        case .specificPost(let postId):
-            return ["param1": postId]
+        case .basicMultipartData(let files):
+            return files
         default:
-            return [:]
+            return []
         }
+        
     }
+    
     
 }
