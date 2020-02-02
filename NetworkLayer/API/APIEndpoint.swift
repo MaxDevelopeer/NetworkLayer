@@ -14,13 +14,12 @@ extension APIRouter {
     var endpoint: String {
         switch self {
         case .posts:
-            return Endpoint.posts
+            return "/posts"
         case .specificPost(let postId):
-            return String(format: Endpoint.specificPost, postId)
+            return "/posts/\(postId)"
         case .basicMultipartData:
-            return Endpoint.basicMultipart
+            return "/exampleMultipart"
         }
     }
-    
     
 }

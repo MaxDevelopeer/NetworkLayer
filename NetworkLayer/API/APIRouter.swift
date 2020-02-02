@@ -58,7 +58,7 @@ public enum APIRouter {
 extension APIRouter: NetworkRequestConstructor {
     
     
-    func asURLRequest() -> Result<URLRequest, Error> {
+    public func asURLRequest() -> Result<URLRequest, Error> {
         
         let resourse = ApiConfig.baseUrl + endpoint
         

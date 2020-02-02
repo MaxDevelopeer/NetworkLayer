@@ -9,8 +9,8 @@
 import Foundation
 
 
-typealias Parameters = [String : Any]
-typealias response = (Result <Data, NetworkClient.NetworkError>) -> ()
+public typealias Parameters = [String : Any]
+public typealias response = (Result <Data, NetworkClient.NetworkError>) -> ()
 
 
 
@@ -21,21 +21,21 @@ protocol NetworkRequestConstructor {
 }
 
 
-class NetworkClient {
+public class NetworkClient {
     
     private let session: URLSession
     
     
-    init(sessionConfiguration: URLSessionConfiguration) {
+    public init(sessionConfiguration: URLSessionConfiguration) {
         self.session = URLSession(configuration: sessionConfiguration)
     }
     
-    init(session: URLSession) {
+   public init(session: URLSession) {
         self.session = session
     }
     
     
-    func requestFor(urlRequest: URLRequest, completion: @escaping response) throws {
+public func requestFor(urlRequest: URLRequest, completion: @escaping response) {
 
         
        let taskCompletionHandler = { (data: Data?, response: URLResponse?, error: Error?) in
@@ -74,8 +74,7 @@ class NetworkClient {
 }
 
 
-extension NetworkClient {
-    
+public extension NetworkClient {
     
     enum NetworkError: Error {
         case missingResponse

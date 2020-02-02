@@ -23,10 +23,3 @@ struct ApiConfig {
     #endif
 
 }
-
-
-struct Endpoint {
-    static let posts = "/posts"
-    static let specificPost = "/posts/%@"
-    static let basicMultipart = "/exampleMultipart"
-}

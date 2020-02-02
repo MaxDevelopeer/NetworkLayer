@@ -28,7 +28,7 @@ extension Dictionary where Key == String, Value == Any {
 }
 
 
-extension Data {
+public extension Data {
     
     func debugInfo() {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: self, options: .allowFragments) as? [String: Any] else { return }
